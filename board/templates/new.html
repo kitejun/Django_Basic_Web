@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+<!--base.html 불러오는 명령어-->
+
+{%block contents%}
+
+<div class="container" style='width:1000px;'>
+
+    <table class="table table-bordered">
+        <h1>내용을 입력하세요</h1>
+        <tbody>
+            <form action="{%url 'create'%}">
+                <!--위조방지토큰-->
+                {% csrf_token %}
+                <tr>
+                    <th>제목:</th>
+                    <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <th>내용:</th>
+                    <td><textarea cols="50" rows=20 placeholder="내용을 입력하세요. " name="body"
+                            class="form-control"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="btn btn-dark" style='width:1000px;' type="submit" value="글쓰기">
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+{%endblock%}

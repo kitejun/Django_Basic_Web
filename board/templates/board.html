@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+<!--base.html 불러오는 명령어-->
+
+{%block contents%}
+
+{% for blog in posts %}
+<!-- 하나의 페이지 -->
+
+<!-- 블로그 전체는 blogs.all -->
+<div class="card"">
+        <div class=" card-body">
+    <h5 class="card-title">
+        <h2> {{blog.title}} </h2>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+        {{blog.pub_date}}
+    </h6>
+    <p class="card-text">
+        {{blog.summary}}
+    </p>
+    <a href="{%url 'detail' blog.id%}" class="card-link">....more</a>
+</div>
+<br>
+</div>
+<br>
+{% endfor %}
+<div>
+    <!-- First Previous 3 of 4 Next Last -->
+    <div class="container" style="display: inline-block;text-align: center;">
+        <!-- First Previous -->
+        {%if posts.has_previous%}
+        <button type="button" onClick="location.href='?page=1'" class="btn btn-success">First</button>
+        <button type="button" onClick="location.href='?page={{posts.previous_page_number}}'"
+            class="btn btn-success">Previous</button>
+        {%endif%}
+
+        <!-- 3 of 4 -->
+        <span class="font-weight-bold">{{posts.number}}</span>
+        <span class="font-weight-bold">of</span>
+        <span class="font-weight-bold">{{posts.paginator.num_pages}}</span> <!-- 전체 번호 -->
+
+
+        <!-- Next Last -->
+        {%if posts.has_next%}
+        <button type="button" onClick="location.href='?page={{posts.next_page_number}}'"
+            class="btn btn-success">Next</button>
+        <button type="button" onClick="location.href='?page={{posts.paginator.num_pages}}'"
+            class="btn btn-success">Last</button>
+        {%endif%}
+
+        <div align="right" height: 100px;">
+            <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>
+        </div>
+        
+
+    </div>
+    <br><br><br><br><br><br>
+</div>
+
+{%endblock%}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!--base.html 불러오는 명령어-->
+
+{% block contents %}
+<div class="container">
+        <form method = "POST" action="{%url 'signup'%}">
+                {% csrf_token %}
+                <!-- 보안을 위한 문 -->
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Sign Up!</h1>
+                </div>
+        
+                <div class="form-label-group">
+                    <label for="username">username:</label>
+                    <input type="text" name="username" class="form-control" placeholder="ID" required autofocus>
+                </div>
+        
+                <div class="form-label-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="password1" class="form-control" placeholder="Password" required>
+                </div>
+
+                <div class="form-label-group">
+                        <label for="Password">Confirm Password</label>
+                        <input type="password" name="password2" class="form-control" placeholder="Password" required>
+                </div>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+            </form>
+</div>
+{%endblock%}

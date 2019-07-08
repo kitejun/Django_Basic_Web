@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+<!--base.html 불러오는 명령어-->
+{% load staticfiles %}
+
+{%block contents%}
+
+<main role="main">
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{%static 'icon.png'%}" height=300 alt="">
+                        <div class="card-body">
+                            <br>
+                            <p class="card-text"><strong>이건 제가 대학생 때 처음으로 만든 로고입니다ㅎ</strong></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">3 years</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{%static 'old.jpg'%}" height=300 alt="">
+                        <div class="card-body">
+                            <br>
+                            <p class="card-text"><strong>작년 겨울 해운대에서..</strong></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">1 years</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {%for portfolio in portfolios.all%}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{{portfolio.image.url}}" height=400 alt="">
+                        <div class="card-body">
+                            <h4>{{ portfolio.title }}</h4>
+                            <p class="card-text">{{ portfolio.description }}</p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="/docs/4.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP"
+    crossorigin="anonymous"></script>
+
+
+{%endblock%}

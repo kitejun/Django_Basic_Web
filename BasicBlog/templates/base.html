@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="{%url 'home'%}">
+      <img src="/static/logo.png" width="40" height="35" class="d-inline-block align-top" alt="">
+      Basic Blog
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item font-weight-bolder">
+          <a class="nav-link" href="{%url 'board'%}">게시판</a>
+        </li>
+        <li class="nav-item font-weight-bolder">
+          <a class="nav-link" href="{%url 'portfolios'%}">프로필</a>
+        </li>
+      </ul>
+
+      <ul class="nav justify-content-end">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle font-weight-bolder btn-outline-primary" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            회원관리
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{%url 'signup'%}">회원가입</a>
+            <a class="dropdown-item" href="{%url 'login'%}">로그인</a>
+            <a class="dropdown-item" href="{%url 'logout'%}">로그아웃</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+
+
+  <div class="container">
+    <!--이 아래에 컨텐츠가 올 예정입니다-->
+    {%block contents%}
+
+    {%endblock%}
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+          <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>소속</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">XX대학교</a></li>
+            <li><a class="text-muted" href="#">컴퓨터공학부 컴퓨터공학과</a></li>
+            <li><a class="text-muted" href="#">XX학번</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>소개</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">김 연 준</a></li>
+            <li><a class="text-muted" href="#">010-XXXX-XXXX</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Tool</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Django</a></li>
+            <li><a class="text-muted" href="#">Python</a></li>
+            <li><a class="text-muted" href="#">PostgreSQL</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
