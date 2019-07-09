@@ -22,7 +22,8 @@ def board(request):
 
 def detail(request, blog_id):
     details = get_object_or_404(Blog, pk=blog_id)
-    return render(request, 'detail.html', {'details': details})
+    blog = Blog()
+    return render(request, 'detail.html', {'blog':blog, 'details': details})
 
 def new(request):
     return render(request, 'new.html')
@@ -52,4 +53,10 @@ def blogpost(request):
         form = BlogPost()
         return render(request, 'new.html', {'form':form}) # form형태로 전달
 
-# def edit 수정해서 넣으면 됨
+# 삭제하기
+def delete(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog.delete()
+    return redirect('board')
+
+# 수정하기
