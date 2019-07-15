@@ -2,10 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('new', views.new, name='new'),
-    path('create/', views.create, name='create'),
     path('', views.board, name='board'),
-    path('newblog/', views.blogpost, name='newblog'),
-    path('detail/<int:blog_id>', views.detail, name="detail"),
-    path('detail/<int:blog_id>/delete', views.delete, name="delete"),
+    # 그냥 생성
+    path('new', views.new, name='new'),
+    # form 형식으로 생성
+    path('newform/',views.newform,name="newform"),
+
+    path('create/', views.create, name='create'),
+    path('detail/<int:board_id>', views.detail, name="detail"),
+
+    path('detail/<int:board_id>/delete', views.delete, name="delete"),
 ]

@@ -3,23 +3,23 @@
 
 {%block contents%}
 
-{% for blog in posts %}
+{% for post in posts %}
 <!-- 하나의 페이지 -->
 
-<!-- 블로그 전체는 blogs.all -->
-<div class="card"">
-        <div class=" card-body">
+<!-- 블로그 전체는 boards.all -->
+<div class="card">
+        <div class="card-body">
     <h5 class="card-title">
-        <h2> {{blog.title}} </h2>
+        <h2> {{post.title}} </h2>
     </h5>
     <h6 class="card-subtitle mb-2 text-muted">
-        {{blog.pub_date}}
+        {{post.pub_date}}
     </h6>
     <p class="card-text">
-        {{blog.summary}}
+        {{post.summary}}
     </p>
-    <a href="{%url 'detail' blog.id%}" class="card-link">....more</a>
-    <p><a href="{%url 'delete' blog.id%}">삭제</a></p>  
+    <a href="{%url 'detail' post.id%}" class="card-link">....more</a>
+    <p><a href="{%url 'delete' post.id%}">삭제</a></p>  
 </div>
 <br>
 </div>
@@ -49,10 +49,14 @@
             class="btn btn-success">Last</button>
         {%endif%}
 
-        <div align="right" height: 100px;">
+        <div>
+        <span height: 100px;">
             <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>
+        </span>
+        <span height: 100px;">
+            <a class="btn btn-success" href="{%url 'newform'%}" role="button">글쓰기(form 형식)</a>
+        </span>
         </div>
-        
 
     </div>
     <br><br><br><br><br><br>
