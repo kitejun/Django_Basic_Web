@@ -12,7 +12,7 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('accounts/', include('accounts.urls')),
-
+    
     path('viewcrud/', include('viewcrud.urls')),
     path('classcrud/', include('classcrud.urls')),
 ]
