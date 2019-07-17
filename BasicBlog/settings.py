@@ -30,8 +30,8 @@ INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
     'accounts.apps.AccountsConfig',
 
-    'viewcrud',
-    'classcrud',
+    'viewcrud.apps.ViewcrudConfig',
+    'classcrud.apps.ClasscrudConfig',
 ]
 
 MIDDLEWARE = [

@@ -7,6 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-    <h1>CRUD 방식
+    {% for blog in blogs %}
+        <h2>{{blog.title}}</h2>
+        <h2>{{blog.body}}</h2>
+
+        <hr>
+    {{% endfor %}}
 </body>
 </html>

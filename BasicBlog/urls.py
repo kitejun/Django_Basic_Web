@@ -2,6 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 import board.views
 
+import viewcrud.urls
+import viewcrud.views
+import classcrud.urls
+import classcrud.views
+
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -13,7 +18,7 @@ urlpatterns = [
     path('portfolio/', include('portfolio.urls')),
     path('accounts/', include('accounts.urls')),
     
-    path('viewcrud/', include('viewcrud.urls')),
+    path('viewcrud/', include(viewcrud.urls)),
     path('classcrud/', include('classcrud.urls')),
 ]
 
