@@ -1,8 +1,12 @@
+from django.shortcuts import render
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# 파일 저장 import문
+from django.core.files.storage import FileSystemStorage
+
 from .models import Board
-from django.core.paginator import Paginator
-# form.py에서 가져옴
 from .form import BoardPost
 
 def home(request):
@@ -16,9 +20,17 @@ def board(request):
     paginator = Paginator(board_list, 3)
     # request된 페이지가 뭔지를 알아내고 (request페이지를 변수에 담아내고)
     page = request.GET.get('page')
+
+    try:
     # request된 페이지를 얻어온 뒤 return 해 준다.
-    posts = paginator.get_page(page)
-    
+        posts = paginator.get_page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, 'board.html', {'boards':boards, 'posts':posts})
 
 def detail(request, board_id):
@@ -42,7 +54,7 @@ def create(request):
 def newform(request):
     # 1. 입력된 내용을 처리하는 기능 -> POST
     if request.method == 'POST':
-        form = BoardPost(request.POST)
+        form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False) # DB에 저장하지 않고 form에 임시 저장
             # 날짜는 자동으로 현재 입력해주는 것
@@ -62,3 +74,34 @@ def delete(request, board_id):
     return redirect('board')
 
 # 수정하기
+def update(request,board_id):
+    board=get_object_or_404(Board,pk=board_id)
+
+
+    # 글을 수정사항을 입력하고 제출을 눌렀을 때
+    if request.method == "POST":
+        form = BoardPost(request.POST, request.FILES, instance=Board)
+        if form.is_valid(): #error
+
+            board=form.save(commit=False)
+
+            print(form.cleaned_data)
+            board.title = form.cleaned_data['title']
+            board.context = form.cleaned_data['context']
+            board.image = form.cleaned_data['image']
+            board.updated_at = timezone.now()
+
+            post.save()
+            return redirect('/detail/'+str(board.pk))
+        
+    # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
+    else:
+        form = BoardPost(instance = board)
+        # 기존 내용 불러오기
+        context={
+            'form':form,
+            'writing':True,
+            'now':'update',
+        }
+        return render(request, 'update.html',{'form':form})
+        

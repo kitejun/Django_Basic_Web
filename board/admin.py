@@ -1,4 +1,7 @@
 from django.contrib import admin
 from .models import Board
 
-admin.site.register(Board)
+class BoardAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'body', 'image')
+    
+admin.site.register(Board, BoardAdmin)

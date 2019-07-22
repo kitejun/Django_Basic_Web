@@ -4,7 +4,7 @@
 {%block contents%}
 <br>
 <div class='container'>
-    <form method='POST'>
+    <form action="{% url 'newform' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         <table>
