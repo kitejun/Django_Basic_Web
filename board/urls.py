@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('create/', views.create, name='create'),
     path('detail/<int:board_id>', views.detail, name="detail"),
-
+    
     path('detail/<int:board_id>/delete', views.delete, name="delete"),
+    path('detail/<int:board_id>/update', views.update, name="update"),
 ]

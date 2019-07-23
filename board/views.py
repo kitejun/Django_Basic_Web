@@ -76,24 +76,23 @@ def delete(request, board_id):
 # 수정하기
 def update(request,board_id):
     board=get_object_or_404(Board,pk=board_id)
-
-
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES, instance=Board)
         if form.is_valid(): #error
 
-            board=form.save(commit=False)
+                post=form.save(commit=False)
+                
+                # 검증에 성공한 값들은 사전타입으로 제공 
+                print(form.cleaned_data)
+                post.title = form.cleaned_data['title']
+                post.body = form.cleaned_data['body']
+                post.image = form.cleaned_data['image']
+                post.pub_date = timezone.now()
 
-            print(form.cleaned_data)
-            board.title = form.cleaned_data['title']
-            board.context = form.cleaned_data['context']
-            board.image = form.cleaned_data['image']
-            board.updated_at = timezone.now()
+                post.save()
+                return redirect('/detail/'+board_id)
 
-            post.save()
-            return redirect('/detail/'+str(board.pk))
-        
     # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
     else:
         form = BoardPost(instance = board)

@@ -7,3 +7,9 @@ class BoardPost(forms.ModelForm):
         model = Board
         # Blog클래스에서 title과 body만 가져옴
         fields = ['title', 'body', 'image'] 
+'''
+class CommentForm(forms.ModelForm):
+        class Meta:
+            model = Comment
+            fields = ['author','message']
+            '''
