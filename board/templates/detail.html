@@ -15,8 +15,8 @@
 <hr>
     <form action="{% url 'comment_write' details.id%}" method="POST">
         {% csrf_token %}
-        <input type="text" name="content" placeholder="Write your comments">
-        <input type="submit" value="Write">
+        <input type="text" name="content" placeholder="댓글을 입력해주세요.">
+        <input type="submit" value="확인">
     </form>
 <hr>
 
@@ -25,6 +25,7 @@
         <p>{{ comment.comment_date }}</p>
         <p>{{ comment.comment_body }}</p>
     </div>
+    <hr>
 {% empty %}
     <p>No comments here yet</p>
 {% endfor %}

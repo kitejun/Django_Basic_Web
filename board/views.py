@@ -110,5 +110,5 @@ def comment_write(request, board_id):
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
 
-        Comment.objects.create(board=board, comment_contents=content)
-        return HttpResponseRedirect(reverse_lazy('board'))
+        Comment.objects.create(board=board, comment_body=content)
+        return redirect('/board/detail/' + str(board.id))

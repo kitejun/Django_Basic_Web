@@ -10,15 +10,15 @@
 <div class="card">
         <div class="card-body">
     <h5 class="card-title">
-        <h2> {{post.title}} </h2>
+        <h2>제목: {{post.title}} &nbsp;&nbsp;&nbsp; {{ post.update_counter }} </h2>
     </h5>
     <h6 class="card-subtitle mb-2 text-muted">
-        {{post.pub_date}}
+        작성일: {{post.pub_date}}
     </h6>
     <p class="card-text">
-        {{post.summary}}
+        내용: {{post.summary}}
     </p>
-    <a href="{%url 'detail' post.id%}" class="card-link">....more</a>
+    <p><a href="{%url 'detail' post.id%}" class="card-link">....more</a></p>
     <p><a href="{%url 'delete' post.id%}">삭제</a></p>  
     <p></p><a href="{% url 'update' post.id %}">수정</a></p> 
 </div>

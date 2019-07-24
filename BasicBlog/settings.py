@@ -29,9 +29,6 @@ INSTALLED_APPS = [
     'board.apps.BoardConfig',
     'portfolio.apps.PortfolioConfig',
     'accounts.apps.AccountsConfig',
-
-    'viewcrud.apps.ViewcrudConfig',
-    'classcrud.apps.ClasscrudConfig',
 ]
 
 MIDDLEWARE = [
