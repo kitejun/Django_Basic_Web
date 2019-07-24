@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # 파일 저장 import문
 from django.core.files.storage import FileSystemStorage
 
-from .models import Board
+from .models import Board, Comment
 from .form import BoardPost
 
 def home(request):
@@ -103,4 +104,11 @@ def update(request,board_id):
             'now':'update',
         }
         return render(request, 'update.html',{'form':form})
-        
+
+def comment_write(request, board_id):
+    if request.method == 'POST':
+        board = get_object_or_404(Board, pk=board_id)
+        content = request.POST.get('content')
+
+        Comment.objects.create(board=board, comment_contents=content)
+        return HttpResponseRedirect(reverse_lazy('board'))

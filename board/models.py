@@ -12,13 +12,7 @@ class Board(models.Model):
     def summary(self):
         return self.body[:50]
 
-'''
 class Comment(models.Model):
-    board = models.ForeignKey(Board, on_delete=models.CASCADE)
-    author = models.CharField(max_length=10)
-    message = models.TextField()
-    pub_date = models.DateTimeField('date published')
-    
-    def __str__(self):
-        return self.author
-'''
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, null=True, related_name='comments')   
+    comment_date = models.DateTimeField(auto_now_add=True)
+    comment_body = models.CharField(max_length=50)

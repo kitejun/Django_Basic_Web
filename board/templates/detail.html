@@ -11,4 +11,22 @@
 
 
 <a class="nav-link" href="{%url 'board'%}">게시판으로</a>
+
+<hr>
+    <form action="{% url 'comment_write' details.id%}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="Write your comments">
+        <input type="submit" value="Write">
+    </form>
+<hr>
+
+{% for comment in details.comments.all %}
+    <div>
+        <p>{{ comment.comment_date }}</p>
+        <p>{{ comment.comment_body }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet</p>
+{% endfor %}
+
 {%endblock%}
