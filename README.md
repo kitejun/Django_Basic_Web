@@ -51,13 +51,15 @@ __김연준(단독)__
 9.  python manage.py runserver: 서버켜기( ★중요: 작업한 .html & .py 파일을 Ctrl+s 로 각각 다 저장해야한다.)
 10. python manage.py makemigrations
       python manage.py migrate               : DB migrate하기
-===============================================================
+===================================
+
 관리자(admin)을 만들 경우
 1. python manage.py createsuperuser  : 관리자(admin) 계정 만들기(아이디, 비번 설정해준다 생각하면 된다.)
 2. models.py 에 클래스를 만든다.: /admin 에서 추가 할 수 있는 형식을 지정 해준다(ex) 제목, 날짜, 내용 글, 사진....)
 3. admin.py에 models.py에 추가한 클래스를 등록(regiter)해준다. : 즉 등록을 안 해주면 models.py에 admin 글쓰는 형식을 정해줘도 /admin 에 나타나지 않는다. 꼭! models.py 에 형식 지정 후 등록해줘야한다.( ex) dmin.site.register(Blog) )
 4. python manage.py collectstatic
-===============================================================
+===================================
+
 ★ 자주 발생되는 일들 ★
 1. .py & .html 을 만들어주고 저장을 안 한다. : 각각 파일마다 Ctrl + s 를 해주던가 오른쪽 마우스 클릭 후 모두 닫기를 누르면 저장하지 못했던 파일들을 알려주고 "저장" 클릭
 2. 들여쓰기 문제: 파이썬은 중괄호{} 로 코드를 구별하지 않고 들여쓰기로 구별한다. 함수 나 클래스를 생성 후 들여쓰기가 잘 되어있는지 확인하자
